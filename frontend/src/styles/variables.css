@@ -1,0 +1,12 @@
+﻿:root {
+  --tech-blue-900: #0a2e6b;
+  --tech-blue-700: #1c57b8;
+  --tech-blue-500: #2f7df6;
+  --tech-cyan-400: #52d7ff;
+  --tech-white: #f6fbff;
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --card-border: rgba(53, 137, 255, 0.22);
+  --text-main: #10335f;
+  --text-sub: #4f6d95;
+  --shadow-main: 0 18px 45px rgba(19, 79, 170, 0.2);
+}

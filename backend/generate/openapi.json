@@ -1,0 +1,217 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Policy Template API",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "configs",
+      "description": "系统配置"
+    },
+    {
+      "name": "dashboard",
+      "description": "仪表盘"
+    },
+    {
+      "name": "profile",
+      "description": "个人中心"
+    },
+    {
+      "name": "roles",
+      "description": "角色管理"
+    },
+    {
+      "name": "users",
+      "description": "用户管理"
+    }
+  ],
+  "paths": {
+    "/api/v1/admin/roles": {
+      "get": {
+        "summary": "查看角色列表",
+        "description": "允许查看系统中的角色列表",
+        "tags": [
+          "roles"
+        ],
+        "operationId": "roles.list"
+      },
+      "post": {
+        "summary": "创建角色",
+        "description": "允许创建新的角色定义",
+        "tags": [
+          "roles"
+        ],
+        "operationId": "roles.create"
+      }
+    },
+    "/api/v1/admin/roles/{id}": {
+      "delete": {
+        "summary": "删除角色",
+        "description": "允许删除指定角色",
+        "tags": [
+          "roles"
+        ],
+        "operationId": "roles.delete"
+      },
+      "put": {
+        "summary": "编辑角色",
+        "description": "允许修改角色的显示名称和说明",
+        "tags": [
+          "roles"
+        ],
+        "operationId": "roles.update"
+      }
+    },
+    "/api/v1/admin/roles/{id}/policies": {
+      "get": {
+        "summary": "查看角色策略",
+        "description": "允许查看指定角色已分配的接口策略",
+        "tags": [
+          "roles"
+        ],
+        "operationId": "roles.policies.get"
+      },
+      "put": {
+        "summary": "保存角色策略",
+        "description": "允许更新指定角色的接口访问策略",
+        "tags": [
+          "roles"
+        ],
+        "operationId": "roles.policies.set"
+      }
+    },
+    "/api/v1/admin/stats": {
+      "get": {
+        "summary": "查看系统统计",
+        "description": "允许查看后台首页的系统统计数据",
+        "tags": [
+          "dashboard"
+        ],
+        "operationId": "dashboard.stats.get"
+      }
+    },
+    "/api/v1/admin/system-configs": {
+      "get": {
+        "summary": "查看系统配置",
+        "description": "允许查看系统配置项列表",
+        "tags": [
+          "configs"
+        ],
+        "operationId": "configs.list"
+      },
+      "put": {
+        "summary": "保存系统配置",
+        "description": "允许新增或更新系统配置项",
+        "tags": [
+          "configs"
+        ],
+        "operationId": "configs.save"
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "summary": "查看用户列表",
+        "description": "允许查看并按条件搜索用户列表",
+        "tags": [
+          "users"
+        ],
+        "operationId": "users.list"
+      },
+      "post": {
+        "summary": "创建用户",
+        "description": "允许新增后台用户并写入基础资料",
+        "tags": [
+          "users"
+        ],
+        "operationId": "users.create"
+      }
+    },
+    "/api/v1/admin/users/{id}": {
+      "delete": {
+        "summary": "删除用户",
+        "description": "允许删除指定用户账号",
+        "tags": [
+          "users"
+        ],
+        "operationId": "users.delete"
+      },
+      "put": {
+        "summary": "编辑用户信息",
+        "description": "允许修改指定用户的基础资料信息",
+        "tags": [
+          "users"
+        ],
+        "operationId": "users.update"
+      }
+    },
+    "/api/v1/admin/users/{id}/password": {
+      "put": {
+        "summary": "重置用户密码",
+        "description": "允许为指定用户重置登录密码",
+        "tags": [
+          "users"
+        ],
+        "operationId": "users.password"
+      }
+    },
+    "/api/v1/admin/users/{id}/roles": {
+      "put": {
+        "summary": "分配用户角色",
+        "description": "允许调整指定用户的角色权限",
+        "tags": [
+          "users"
+        ],
+        "operationId": "users.roles"
+      }
+    },
+    "/api/v1/user/avatar/upload": {
+      "post": {
+        "summary": "上传头像",
+        "description": "允许上传并更新当前登录用户头像",
+        "tags": [
+          "profile"
+        ],
+        "operationId": "profile.avatar"
+      }
+    },
+    "/api/v1/user/password/reset": {
+      "post": {
+        "summary": "重置个人密码",
+        "description": "允许重置当前登录用户的登录密码",
+        "tags": [
+          "profile"
+        ],
+        "operationId": "profile.password"
+      }
+    },
+    "/api/v1/user/phone/change": {
+      "post": {
+        "summary": "更换手机号",
+        "description": "允许验证当前手机号后绑定新的手机号",
+        "tags": [
+          "profile"
+        ],
+        "operationId": "profile.phone"
+      }
+    },
+    "/api/v1/user/profile": {
+      "get": {
+        "summary": "查看个人资料",
+        "description": "允许查看当前登录用户的个人资料信息",
+        "tags": [
+          "profile"
+        ],
+        "operationId": "profile.view"
+      },
+      "put": {
+        "summary": "更新个人资料",
+        "description": "允许修改当前登录用户的基础资料",
+        "tags": [
+          "profile"
+        ],
+        "operationId": "profile.update"
+      }
+    }
+  }
+}
