@@ -8,6 +8,8 @@
 
 <img width="2467" height="1472" alt="image" src="https://github.com/user-attachments/assets/1b2e618e-9309-4601-b4f8-e756483ad06e" />
 
+
+
 An enterprise-ready starter built with `Gin + React + Casbin + JWT + PostgreSQL + Redis`, including authentication, RBAC, configuration management, SMS verification, and file upload support.
 
 ## Features
