@@ -18,4 +18,4 @@ backend/.env
 frontend/.env.local
 
 #dcoker
-./docker-compose.yml
+docker-compose-prod.yml
