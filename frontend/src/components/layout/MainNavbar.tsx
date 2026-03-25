@@ -88,7 +88,7 @@ export default function MainNavbar() {
                       {
                         key: 'admin',
                         label: t('nav.admin'),
-                        onClick: () => navigate('/admin')
+                        onClick: () => navigate('/admin/home')
                       }
                     ]
                   : []),

@@ -1,0 +1,16 @@
+.git
+.gitignore
+
+backend/.gocache
+backend/.gomodcache
+backend/.gopath
+backend/server
+backend/server.exe
+backend/uploads
+backend/web
+backend/.env
+
+frontend/node_modules
+frontend/.vite
+
+README.md

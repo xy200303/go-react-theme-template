@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -50,8 +51,10 @@ type Config struct {
 }
 
 func LoadConfig(envPath string) (*Config, error) {
-	if err := godotenv.Load(envPath); err != nil {
-		return nil, fmt.Errorf("failed to parse env file %s: %w", envPath, err)
+	if envPath != "" {
+		if err := godotenv.Load(envPath); err != nil && !errors.Is(err, os.ErrNotExist) {
+			return nil, fmt.Errorf("failed to parse env file %s: %w", envPath, err)
+		}
 	}
 
 	cfg := &Config{
@@ -89,7 +92,7 @@ func LoadConfig(envPath string) (*Config, error) {
 
 		InitAdminUsername: getEnv("INIT_ADMIN_USERNAME", "admin"),
 		InitAdminPhone:    getEnv("INIT_ADMIN_PHONE", "13800000000"),
-		InitAdminPassword: getEnv("INIT_ADMIN_PASSWORD", "Admin@123456"),
+		InitAdminPassword: getEnv("INIT_ADMIN_PASSWORD", "admin234"),
 	}
 
 	if cfg.PostgresDSN == "" {

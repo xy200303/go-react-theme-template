@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { Menu, type MenuProps } from 'antd';
 
 export interface SidebarLayoutItem<T extends string> {
@@ -86,6 +86,9 @@ export default function SidebarLayout<T extends string>({
   const activePath = useMemo(() => findActivePath(items, targetKey), [items, targetKey]);
   const menuItems = useMemo(() => toMenuItems(items), [items]);
   const [openKeys, setOpenKeys] = useState<string[]>(activePath.slice(0, -1));
+  const layoutStyle = {
+    '--sidebar-grid-columns': collapsed ? '92px minmax(0, 1fr)' : '272px minmax(0, 1fr)'
+  } as CSSProperties;
 
   useEffect(() => {
     if (!collapsed) {
@@ -95,11 +98,15 @@ export default function SidebarLayout<T extends string>({
 
   return (
     <div
-      className={`sidebar-layout sidebar-layout--traditional mx-auto grid w-[96%] min-w-0 gap-4 ${collapsed ? 'md:grid-cols-[92px_minmax(0,1fr)]' : 'md:grid-cols-[272px_minmax(0,1fr)]'}`}
+      className="sidebar-layout sidebar-layout--traditional mx-auto grid w-[96%] min-w-0 gap-4"
+      data-collapsed={collapsed ? 'true' : 'false'}
+      style={layoutStyle}
     >
       <aside className={`tech-card sidebar-shell sidebar-shell--traditional min-w-0 ${collapsed ? 'sidebar-shell--collapsed' : ''}`}>
         <div className="sidebar-shell__header">
-          {!collapsed ? <div className="sidebar-shell__title sidebar-shell__title--centered">{title}</div> : null}
+          <div className={`sidebar-shell__title-wrap ${collapsed ? 'sidebar-shell__title-wrap--hidden' : ''}`} aria-hidden={collapsed}>
+            <div className="sidebar-shell__title sidebar-shell__title--centered">{title}</div>
+          </div>
           <button
             className={`sidebar-shell__trigger ${collapsed ? 'sidebar-shell__trigger--collapsed' : ''}`}
             onClick={onToggle}

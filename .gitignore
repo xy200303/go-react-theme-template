@@ -16,3 +16,6 @@ backend/web/
 # Env
 backend/.env
 frontend/.env.local
+
+#dcoker
+./docker-compose.yml

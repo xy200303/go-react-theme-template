@@ -125,6 +125,9 @@ body::before {
   min-height: calc(100vh - 132px);
   min-height: calc(100dvh - 132px);
   min-width: 0;
+  transition:
+    grid-template-columns 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    gap 0.3s ease;
 }
 
 .sidebar-shell {
@@ -134,9 +137,12 @@ body::before {
   min-height: 100%;
   padding: 14px 12px;
   transition:
-    padding 0.2s ease,
-    width 0.2s ease;
+    padding 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease,
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
   background: #ffffff;
+  will-change: padding, width, transform;
 }
 
 .sidebar-content {
@@ -164,6 +170,26 @@ body::before {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 12px;
+  transition: margin-bottom 0.3s ease;
+}
+
+.sidebar-shell__title-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 0.2s ease,
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    flex-basis 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sidebar-shell__title-wrap--hidden {
+  flex: 0 1 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
 }
 
 .sidebar-shell__title {
@@ -175,6 +201,9 @@ body::before {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition:
+    opacity 0.18s ease,
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sidebar-shell__title--centered {
@@ -188,6 +217,9 @@ body::before {
 .sidebar-shell__body {
   flex: 1;
   min-height: 0;
+  transition:
+    opacity 0.22s ease,
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sidebar-panel {
@@ -215,6 +247,7 @@ body::before {
 
 .sidebar-shell--collapsed {
   padding: 12px 10px;
+  transform: translateZ(0);
 }
 
 .sidebar-shell__trigger {
@@ -229,12 +262,17 @@ body::before {
   background: #ffffff;
   color: #1f2937;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    transform 0.28s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .sidebar-shell__trigger:hover {
   background: #f8fafc;
   border-color: #cfd8e6;
+  box-shadow: 0 8px 18px rgba(148, 163, 184, 0.18);
 }
 
 .sidebar-shell__trigger:focus-visible {
@@ -245,7 +283,7 @@ body::before {
 .sidebar-toggle__icon {
   width: 16px;
   height: 16px;
-  transition: transform 0.2s ease;
+  transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sidebar-toggle__icon--collapsed {
@@ -261,6 +299,9 @@ body::before {
   background: transparent !important;
   color: #111827;
   font-size: 14px;
+  transition:
+    opacity 0.22s ease,
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sidebar-menu.ant-menu-inline-collapsed {
@@ -277,10 +318,17 @@ body::before {
   border-radius: 8px;
   color: #111827;
   font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.28s ease;
 }
 
 .sidebar-menu .ant-menu-title-content {
   color: inherit;
+  transition:
+    opacity 0.18s ease,
+    transform 0.28s ease;
 }
 
 .sidebar-menu .ant-menu-item:hover,
@@ -334,6 +382,9 @@ body::before {
   margin-top: 0;
   transform: translateY(-50%);
   color: #94a3b8;
+  transition:
+    color 0.2s ease,
+    transform 0.28s ease;
 }
 
 .sidebar-menu > .ant-menu-submenu > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow,
@@ -359,7 +410,9 @@ body::before {
 
 .sidebar-menu .ant-menu-item .sidebar-menu-icon,
 .sidebar-menu .ant-menu-submenu-title .sidebar-menu-icon {
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.28s ease;
 }
 
 .sidebar-menu .ant-menu-item:hover .sidebar-menu-icon,
@@ -367,6 +420,21 @@ body::before {
 .sidebar-menu .ant-menu-item-selected .sidebar-menu-icon,
 .sidebar-menu .ant-menu-submenu-selected > .ant-menu-submenu-title .sidebar-menu-icon {
   color: #1d4ed8;
+}
+
+.sidebar-layout[data-collapsed='true'] .sidebar-shell__body,
+.sidebar-layout[data-collapsed='true'] .sidebar-menu.ant-menu {
+  transform: translateX(-2px);
+}
+
+.sidebar-layout[data-collapsed='true'] .sidebar-menu .ant-menu-title-content {
+  opacity: 0;
+  transform: translateX(-6px);
+}
+
+.sidebar-layout[data-collapsed='true'] .sidebar-menu .ant-menu-item .sidebar-menu-icon,
+.sidebar-layout[data-collapsed='true'] .sidebar-menu .ant-menu-submenu-title .sidebar-menu-icon {
+  transform: scale(1.02);
 }
 
 .navbar-link {
@@ -653,5 +721,11 @@ body::before {
 
   .main-navbar__right {
     justify-content: flex-end;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar-layout--traditional {
+    grid-template-columns: var(--sidebar-grid-columns, 272px minmax(0, 1fr));
   }
 }
