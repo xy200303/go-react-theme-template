@@ -2,6 +2,17 @@
 
 基于 `Gin + React + Casbin + JWT + PostgreSQL + Redis` 的企业级项目模板，内置认证、权限、配置管理、短信验证码与文件上传能力。
 
+
+<img width="2490" height="1477" alt="image" src="https://github.com/user-attachments/assets/d9ce0569-e061-4a8c-a632-cd8f56e2ff5c" />
+
+<img width="2500" height="1465" alt="image" src="https://github.com/user-attachments/assets/e75466f4-2a60-4c78-82bd-b7f3f69d429a" />
+
+<img width="2494" height="1451" alt="image" src="https://github.com/user-attachments/assets/b7c7f4b8-eaf0-4618-aaee-9e218864d398" />
+
+<img width="2467" height="1472" alt="image" src="https://github.com/user-attachments/assets/1b2e618e-9309-4601-b4f8-e756483ad06e" />
+
+
+
 ## 功能特性
 
 - 用户注册与登录：支持密码登录与短信验证码登录
